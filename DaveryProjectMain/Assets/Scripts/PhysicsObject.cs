@@ -39,7 +39,7 @@ public class PhysicsObject : MonoBehaviour
 
     protected virtual void ComputeVelocity()
     {
-
+        // To be replaced with individual object velocity calculation
     }
 
     void FixedUpdate()
@@ -50,7 +50,7 @@ public class PhysicsObject : MonoBehaviour
         grounded = false;
 
         Vector2 deltaPosition = velocity * Time.deltaTime;
-
+        deltaPosition = PixelClamp(deltaPosition);
         Vector2 moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
 
         Vector2 move = moveAlongGround * deltaPosition.x;
@@ -77,6 +77,7 @@ public class PhysicsObject : MonoBehaviour
             for (int i = 0; i < hitBufferList.Count; i++)
             {
                 Vector2 currentNormal = hitBufferList[i].normal;
+                Debug.Log("CN: " + currentNormal);
                 if (currentNormal.y > minGroundNormalY)
                 {
                     grounded = true;
@@ -94,8 +95,18 @@ public class PhysicsObject : MonoBehaviour
                 float modifiedDistance = hitBufferList[i].distance - shellRadius;
                 distance = modifiedDistance < distance ? modifiedDistance : distance;
             }
-            
+
         }
         rb2d.position = rb2d.position + move.normalized * distance;
+    }
+
+    private Vector2 PixelClamp(Vector2 moveVector)
+    {
+        Vector2 clampedVector = new Vector2(
+            moveVector.x < 0 ? Mathf.Floor(moveVector.x * 16) : Mathf.Ceil(moveVector.x * 16),
+            moveVector.y < 0 ? Mathf.Floor(moveVector.y * 16) : Mathf.Ceil(moveVector.y* 16)
+            );
+
+        return clampedVector/16;
     }
 }
