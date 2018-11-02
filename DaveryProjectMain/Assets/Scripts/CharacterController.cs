@@ -6,29 +6,40 @@ public class CharacterController : PhysicsObject {
 
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 7;
+    public int thisCharId = 0;
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+    private GameObject UI;
+    private LevelManager level;
+    private int currentCharId;
 
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        UI = GameObject.Find("UI");
     }
 
     protected override void ComputeVelocity()
     {
         Vector2 move = Vector2.zero;
+        level = UI.GetComponent<LevelManager>();
+        currentCharId = level.currentCharId;
 
-        move.x = Input.GetAxis("Horizontal");
-        if (Input.GetButtonDown("Jump") && grounded)
+        if (currentCharId == thisCharId)
         {
-            velocity.y = jumpTakeOffSpeed;
-        } else if (Input.GetButtonUp("Jump"))
-        {
-            if (velocity.y > 0)
+            move.x = Input.GetAxis("Horizontal");
+            if (Input.GetButtonDown("Jump") && grounded)
             {
-                velocity.y = velocity.y * 0.5f;
+                velocity.y = jumpTakeOffSpeed;
+            }
+            else if (Input.GetButtonUp("Jump"))
+            {
+                if (velocity.y > 0)
+                {
+                    velocity.y = velocity.y * 0.5f;
+                }
             }
         }
 
@@ -50,6 +61,24 @@ public class CharacterController : PhysicsObject {
         animator.SetFloat("velocityx", Mathf.Abs(velocity.x) / maxSpeed);
 
         targetVelocity = move * maxSpeed;
+    }
+
+    private void LateUpdate()
+    {
+        if (currentCharId == thisCharId)
+        {
+            if (Input.GetButtonDown("Switch"))
+            {
+                if (level.currentCharId + 1 < level.totalChars)
+                {
+                    level.currentCharId += 1;
+                }
+                else
+                {
+                    level.currentCharId = 0;
+                }
+            }
+        }
     }
 }
 

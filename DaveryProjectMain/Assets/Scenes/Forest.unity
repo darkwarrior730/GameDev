@@ -15178,6 +15178,48 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &388315327
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 388315328}
+  - component: {fileID: 388315329}
+  m_Layer: 0
+  m_Name: UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &388315328
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 388315327}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.423524, y: 0.29837555, z: 51.61914}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &388315329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 388315327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4fb12cfc2fdea54089455436915d41c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalChars: 2
+  currentCharId: 0
 --- !u!1 &600196846
 GameObject:
   m_ObjectHideFlags: 0
@@ -15191,9 +15233,9 @@ GameObject:
   - component: {fileID: 600196847}
   - component: {fileID: 600196852}
   - component: {fileID: 600196851}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dave
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15213,6 +15255,7 @@ MonoBehaviour:
   gravityMod: 2
   maxSpeed: 6
   jumpTakeOffSpeed: 11.5
+  thisCharId: 0
 --- !u!61 &600196848
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15265,7 +15308,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 600196846}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.38, y: 0.5, z: 0}
+  m_LocalPosition: {x: 7, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -15470,9 +15513,9 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 40
+  field of view: 29
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 8.4375
   m_Depth: -2
   m_CullingMask:
     serializedVersion: 2
@@ -15495,7 +15538,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1096143401}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 7.0000005, y: -3.0000005, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -15563,9 +15606,9 @@ GameObject:
   - component: {fileID: 1393249487}
   - component: {fileID: 1393249489}
   - component: {fileID: 1393249486}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Avery
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15628,6 +15671,7 @@ MonoBehaviour:
   gravityMod: 2
   maxSpeed: 5
   jumpTakeOffSpeed: 13
+  thisCharId: 1
 --- !u!50 &1393249488
 Rigidbody2D:
   serializedVersion: 4
@@ -15701,7 +15745,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1393249484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.59, y: -0.2, z: 0}
+  m_LocalPosition: {x: 3, y: 15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -15716,6 +15760,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1417638949}
   - component: {fileID: 1417638948}
+  - component: {fileID: 1417638950}
   m_Layer: 0
   m_Name: Cinemachine Controller
   m_TagString: Untagged
@@ -15740,7 +15785,7 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 1393249490}
+  m_Follow: {fileID: 600196850}
   m_Lens:
     FieldOfView: 29
     OrthographicSize: 8.4375
@@ -15755,13 +15800,24 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1417638947}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.59, y: -0.20000048, z: -10}
+  m_LocalPosition: {x: 7.0000005, y: -3.0000005, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1036240767}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1417638950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1417638947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9c10525aca59334e82cd2d7f3a9663d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1444014234
 GameObject:
   m_ObjectHideFlags: 0
