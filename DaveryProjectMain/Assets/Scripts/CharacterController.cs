@@ -7,6 +7,7 @@ public class CharacterController : PhysicsObject {
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 7;
     public int thisCharId = 0;
+    public bool lastFlipSprite = false;
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -52,10 +53,47 @@ public class CharacterController : PhysicsObject {
         {
             animator.Play("Idle");
         }
-        bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < -0.01f));
+        //bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < -0.01f));
+        bool flipSprite = (move.x < 0.0f);
         if (flipSprite)
         {
-            spriteRenderer.flipX = !spriteRenderer.flipX;
+            if (lastFlipSprite == false)
+            {
+                lastFlipSprite = true;
+                flipSprite = true;
+            }
+            else
+            {
+                lastFlipSprite = true;
+                flipSprite = false;
+            }
+        } else
+        {
+            if (move.x != 0.0f)
+            {
+                if (lastFlipSprite == true)
+                {
+                    lastFlipSprite = false;
+                    flipSprite = true;
+                }
+                else
+                {
+                    lastFlipSprite = false;
+                    flipSprite = false;
+                }
+            }
+        }
+        if (flipSprite)
+        {
+            //spriteRenderer.flipX = !spriteRenderer.flipX;
+            transform.Rotate(0.0f, 180.0f, 0.0f);
+            if (move.x < 0.0f)
+            {
+                transform.Translate(0.1f, 0.0f, 0.0f);
+            } else if (move.x > 0.0f)
+            {
+                transform.Translate(0.1f, 0.0f, 0.0f);
+            }
         }
         animator.SetBool("grounded", grounded);
         animator.SetFloat("velocityx", Mathf.Abs(velocity.x) / maxSpeed);

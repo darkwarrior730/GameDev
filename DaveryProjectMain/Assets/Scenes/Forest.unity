@@ -15178,6 +15178,34 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &119216669
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 119216670}
+  m_Layer: 10
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &119216670
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 119216669}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.665, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 600196850}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &388315327
 GameObject:
   m_ObjectHideFlags: 0
@@ -15233,6 +15261,7 @@ GameObject:
   - component: {fileID: 600196847}
   - component: {fileID: 600196852}
   - component: {fileID: 600196851}
+  - component: {fileID: 600196853}
   m_Layer: 10
   m_Name: Dave
   m_TagString: Player
@@ -15256,6 +15285,7 @@ MonoBehaviour:
   maxSpeed: 6
   jumpTakeOffSpeed: 11.5
   thisCharId: 0
+  lastFlipSprite: 0
 --- !u!61 &600196848
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15310,7 +15340,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 7, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 119216670}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15378,6 +15409,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &600196853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 600196846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 341119078c28ff24684c04d4bb020039, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 119216670}
+  bulletPrefab: {fileID: 1728397363527868, guid: 17dc6de6aea9bba45a66b0e402bdbbbb,
+    type: 2}
 --- !u!1 &1036240766
 GameObject:
   m_ObjectHideFlags: 3
@@ -15672,6 +15717,7 @@ MonoBehaviour:
   maxSpeed: 5
   jumpTakeOffSpeed: 13
   thisCharId: 1
+  lastFlipSprite: 0
 --- !u!50 &1393249488
 Rigidbody2D:
   serializedVersion: 4
