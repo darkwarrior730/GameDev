@@ -17,7 +17,7 @@ TagManager:
   - 
   - Player
   - 
-  - 
+  - Logs
   - Ground
   - 
   - Tree Layer 1
@@ -49,6 +49,9 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 4290285507
+    locked: 0
+  - name: Logs
+    uniqueID: 473103291
     locked: 0
   - name: Player
     uniqueID: 1144362615
