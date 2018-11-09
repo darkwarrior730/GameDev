@@ -50,7 +50,6 @@ public class PhysicsObject : MonoBehaviour
         grounded = false;
 
         Vector2 deltaPosition = velocity * Time.deltaTime;
-        deltaPosition = PixelClamp(deltaPosition);
 
         Vector2 moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
 
@@ -84,18 +83,6 @@ public class PhysicsObject : MonoBehaviour
         }
 
         rb2d.position = rb2d.position + move.normalized * distance;
-    }
-
-    
-
-    private Vector2 PixelClamp(Vector2 moveVector)
-    {
-        Vector2 clampedVector = new Vector2(
-            moveVector.x < 0 ? Mathf.Floor(moveVector.x * 16) : Mathf.Ceil(moveVector.x * 16),
-            moveVector.y < 0 ? Mathf.Floor(moveVector.y * 16) : Mathf.Ceil(moveVector.y* 16)
-            );
-
-        return clampedVector/16;
     }
 
     private List<RaycastHit2D> CreateHitBufferList(Vector2 move, float distance)
