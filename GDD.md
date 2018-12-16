@@ -1,11 +1,11 @@
 I have gone through the current GDD and compilied a list of everything in it, have a look and tell me if you think anything should be moved, added or removed
 
-#Needed ASAP
-##Story
+# Needed ASAP
+## Story
 - Story Overview / Plot outline
 - Playable Characters
 - Cutscenes
-##Mechanics / Design
+## Mechanics / Design
 - Gameplay Summary
 - Player Metrics
 - Player Skills
@@ -23,15 +23,15 @@ I have gone through the current GDD and compilied a list of everything in it, ha
 - Level-Specific Enemies
 - Bosses
 - NPCs
-##Other
+## Other
 - Music
 - SFX
-#Needed soonish
+# Needed soonish
 Collectibles and Items
 - Vehicles
 - Minigames
 - Other Screens
-#Not needed for quite a while
+# Not needed for quite a while
 - Game Controls
 - Technological Requirements
 - Splash Screens
