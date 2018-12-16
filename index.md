@@ -29,7 +29,7 @@ I have gone through the current GDD and compilied a list of everything in it, ha
 - Game Controls
 - Technological Requirements
 # __Needed soonish__
-Collectibles and Items
+- Collectibles and Items
 - Vehicles
 - Minigames
 - Other Screens
