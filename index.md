@@ -26,14 +26,14 @@ I have gone through the current GDD and compilied a list of everything in it, ha
 ## Other
 - Music
 - SFX
+- Game Controls
+- Technological Requirements
 # __Needed soonish__
 Collectibles and Items
 - Vehicles
 - Minigames
 - Other Screens
 # __Not needed for quite a while__
-- Game Controls
-- Technological Requirements
 - Splash Screens
 - Start Screen
 - Game Menu Flowchart
